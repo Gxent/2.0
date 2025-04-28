@@ -1,0 +1,99 @@
+body {
+  margin:0; padding:0;
+  background:#0c1e2c;
+  color:#fff;
+  font-family: Arial, sans-serif;
+}
+header {
+  background:#000;
+  text-align:center;
+  padding:10px 0;
+}
+.logo { max-width:300px; }
+main {
+  max-width:1000px;
+  margin:20px auto;
+  padding:20px;
+  background:#1a2e3c;
+  border-radius:8px;
+}
+.jackpot-header h1 {
+  text-align:center;
+  color:#f7c600;
+  margin:10px 0 20px;
+}
+.zahlen-gross {
+  text-align:center;
+  font-size:1.5em;
+  margin:10px 0;
+}
+.zahlen-gross strong { display:block; margin-top:5px; }
+.tipps-container {
+  display:flex;
+  gap:20px;
+  justify-content:space-between;
+}
+.tipps-container div {
+  flex:1;
+  background:#243646;
+  padding:15px;
+  border-radius:6px;
+}
+.countdown {
+  text-align:center;
+  margin:20px 0;
+  font-size:1.1em;
+  color:#f7c600;
+}
+.spielschein h3,
+.admin-menu h3 {
+  color:#f7c600;
+}
+.checkbox-group {
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin:10px 0;
+}
+.checkbox-group label {
+  background:#fff;
+  color:#000;
+  padding:4px 8px;
+  border-radius:20px;
+  font-size:0.9em;
+  cursor:pointer;
+}
+button {
+  background:#f7c600;
+  color:#000;
+  border:none;
+  padding:8px 16px;
+  border-radius:4px;
+  cursor:pointer;
+  margin-top:10px;
+}
+.error {
+  color:#f22;
+  margin-top:10px;
+}
+.admin-menu form > div {
+  margin:10px 0;
+}
+.login-box {
+  max-width:400px;
+  margin:80px auto;
+  background:#243646;
+  padding:30px;
+  border-radius:8px;
+  text-align:center;
+}
+.login-box input {
+  width:100%;
+  padding:10px;
+  margin:10px 0;
+  border:none;
+  border-radius:4px;
+}
+.login-box button {
+  width:100%;
+}

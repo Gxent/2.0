@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>WorldJackpot</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <img src="{{ url_for('static','logo.png') }}" alt="Logo" class="logo">
+  </header>
+  <main>
+    <div class="jackpot-header">
+      <h1>{{ logo_text }}</h1>
+    </div>
+    {% if ziehung %}
+    <div class="zahlen-gross">
+      <span>Gezogene Zahlen:</span>
+      <strong>{{ ziehung.zahlen }} + {{ ziehung.world }}</strong>
+    </div>
+    {% endif %}
+    <div class="tipps-container">
+      <div>
+        <h3>Deine aktuellen Tipps</h3>
+        {% for s in scheine_new %}
+          <p>{{ s.zahlen }} + {{ s.world }}</p>
+        {% endfor %}
+      </div>
+      <div>
+        <h3>Vergangene getippte Zahlen</h3>
+        {% for s in scheine_old %}
+          <p>{{ s.zahlen }} + {{ s.world }}</p>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="countdown">
+      <p>Nächste Ziehung in: {{ countdown//86400 }}d {{ (countdown%86400)//3600 }}h {{ (countdown%3600)//60 }}m</p>
+    </div>
+    {% if not is_admin %}
+    <section class="spielschein">
+      <h3>Neuer Spielschein</h3>
+      <form method="post">
+        <div class="checkbox-group">
+          {% for i in range(1,51) %}
+            <label><input type="checkbox" name="zahlen" value="{{ i }}"> {{ i }}</label>
+          {% endfor %}
+        </div>
+        <div class="checkbox-group">
+          {% for i in range(1,11) %}
+            <label><input type="checkbox" name="worldzahlen" value="{{ i }}"> {{ i }}</label>
+          {% endfor %}
+        </div>
+        <button type="submit">Schein abgeben</button>
+      </form>
+      {% if message %}<p class="error">{{ message }}</p>{% endif %}
+    </section>
+    {% endif %}
+    {% if is_admin %}
+    <section class="admin-menu">
+      <h3>Admin-Menü</h3>
+      <form method="post">
+        <button name="freigeben">Jackpot freigeben/sperren</button>
+        <button name="ziehen">Ziehung starten</button>
+        <div>
+          <input type="text" name="jackpot_text" placeholder="Jackpot-Text editieren">
+          <button name="bearbeiten_jackpot_text">Speichern</button>
+        </div>
+        <button name="toggle_sim">Sim-Anzeige AN/AUS</button>
+      </form>
+    </section>
+    {% endif %}
+    <footer>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </footer>
+  </main>
+</body>
+</html>
